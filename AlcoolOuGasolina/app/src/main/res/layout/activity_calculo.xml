@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jesus.jeferson.alcoolougasolina.CalculoActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txSaibaOpcaoAbastecer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txSaibaOpcaoAbastecer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Saiba a melhor opção para abastecer"
+        app:layout_constraintBottom_toTopOf="@+id/txAlcool"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/txAlcool"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Preço Álcool ex: 1.90"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/txGasolina"
+        app:layout_constraintEnd_toEndOf="@+id/txSaibaOpcaoAbastecer"
+        app:layout_constraintStart_toStartOf="@+id/txSaibaOpcaoAbastecer"
+        app:layout_constraintTop_toBottomOf="@+id/txSaibaOpcaoAbastecer" />
+
+    <EditText
+        android:id="@+id/txGasolina"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Preço gasolina"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalcular"
+        app:layout_constraintEnd_toEndOf="@+id/txAlcool"
+        app:layout_constraintStart_toStartOf="@+id/txAlcool"
+        app:layout_constraintTop_toBottomOf="@+id/txAlcool" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:onClick="calcular"
+        android:text="Calcular"
+        app:layout_constraintBottom_toTopOf="@+id/txOpcaoEscolhida"
+        app:layout_constraintEnd_toEndOf="@+id/txGasolina"
+        app:layout_constraintStart_toStartOf="@+id/txGasolina"
+        app:layout_constraintTop_toBottomOf="@+id/txGasolina" />
+
+    <TextView
+        android:id="@+id/txOpcaoEscolhida"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Nenhuma opção escolhida"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnCalcular"
+        app:layout_constraintStart_toStartOf="@+id/btnCalcular"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcular" />
+
+</android.support.constraint.ConstraintLayout>
