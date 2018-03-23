@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +16,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadComponents() {
+
+        imgLogo.setOnClickListener {
+            Toast.makeText(this , "Olá Usuário" , Toast.LENGTH_LONG).show()
+        }
+
         btnClientes.setOnClickListener {
             val intent = Intent(this, DetalheClientesActivity::class.java)
             startActivity(intent)
@@ -29,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetalheServicosActivity::class.java)
             startActivity(intent)
         }
-
 
         btnContato.setOnClickListener {
             val intent = Intent(this, DetalheContatoActivity::class.java)
