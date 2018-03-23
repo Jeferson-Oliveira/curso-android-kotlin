@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.09975669" />
 
     <android.support.constraint.Guideline
         android:id="@+id/vGuide3"
@@ -70,64 +70,60 @@
         app:layout_constraintTop_toTopOf="@+id/hGuide4"
         app:srcCompat="@drawable/logo" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <Button
+        android:id="@+id/btnClientes"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
+        android:background="@drawable/menu_cliente"
         app:layout_constraintBottom_toTopOf="@+id/hGuide2"
         app:layout_constraintEnd_toStartOf="@+id/vGuide1"
         app:layout_constraintStart_toStartOf="@+id/vGuide2"
-        app:layout_constraintTop_toTopOf="@+id/hGuide1"
-        app:srcCompat="@drawable/menu_cliente" />
+        app:layout_constraintTop_toTopOf="@+id/hGuide1" />
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <Button
+        android:id="@+id/btnEmpresa"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
+        android:background="@drawable/menu_empresa"
         app:layout_constraintBottom_toTopOf="@+id/hGuide2"
         app:layout_constraintEnd_toStartOf="@+id/vGuide3"
         app:layout_constraintStart_toStartOf="@+id/vGuide1"
-        app:layout_constraintTop_toTopOf="@+id/hGuide1"
-        app:srcCompat="@drawable/menu_empresa" />
+        app:layout_constraintTop_toTopOf="@+id/hGuide1" />
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <Button
+        android:id="@+id/btnServicos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/hGuide3"
-        app:layout_constraintEnd_toStartOf="@+id/vGuide3"
-        app:layout_constraintStart_toStartOf="@+id/vGuide1"
-        app:layout_constraintTop_toTopOf="@+id/hGuide2"
-        app:srcCompat="@drawable/menu_contato" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
+        android:background="@drawable/menu_servico"
         app:layout_constraintBottom_toTopOf="@+id/hGuide3"
         app:layout_constraintEnd_toStartOf="@+id/vGuide1"
         app:layout_constraintStart_toStartOf="@+id/vGuide2"
-        app:layout_constraintTop_toTopOf="@+id/hGuide2"
-        app:srcCompat="@drawable/menu_servico" />
+        app:layout_constraintTop_toTopOf="@+id/hGuide2" />
+
+    <Button
+        android:id="@+id/btnContato"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/menu_contato"
+        app:layout_constraintBottom_toTopOf="@+id/hGuide3"
+        app:layout_constraintEnd_toStartOf="@+id/vGuide3"
+        app:layout_constraintStart_toStartOf="@+id/vGuide1"
+        app:layout_constraintTop_toTopOf="@+id/hGuide2" />
 
 </android.support.constraint.ConstraintLayout>
