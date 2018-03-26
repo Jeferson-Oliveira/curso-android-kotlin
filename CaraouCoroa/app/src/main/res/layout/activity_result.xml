@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jesus.jeferson.caraoucoroa.MainActivity">
+    tools:context="com.example.jesus.jeferson.caraoucoroa.ResultActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/hGuide20pc"
@@ -27,14 +27,14 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:contentDescription="Logotipo App"
-        app:layout_constraintBottom_toTopOf="@+id/btnJogar"
+        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toStartOf="@+id/vGuide20pc"
         app:layout_constraintStart_toStartOf="@+id/vGuide80pc"
         app:layout_constraintTop_toTopOf="@+id/hGuide20pc"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/moeda_cara" />
 
     <ImageButton
-        android:id="@+id/btnJogar"
+        android:id="@+id/btnVoltar"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/vGuide20pc"
         app:layout_constraintStart_toStartOf="@+id/vGuide80pc"
         app:layout_constraintTop_toBottomOf="@+id/imgResultado"
-        app:srcCompat="@drawable/botao_jogar" />
+        app:srcCompat="@drawable/botao_voltar" />
 
     <android.support.constraint.Guideline
         android:id="@+id/vGuide20pc"
