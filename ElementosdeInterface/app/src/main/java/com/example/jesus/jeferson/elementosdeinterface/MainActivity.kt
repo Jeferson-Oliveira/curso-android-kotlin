@@ -3,6 +3,7 @@ package com.example.jesus.jeferson.elementosdeinterface
 import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.RadioButton
 import android.widget.SeekBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -70,5 +71,11 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
             }
         })
+
+        btnVerificarRadio.setOnClickListener {
+            if(rdGroup.checkedRadioButtonId != -1) {
+                txRadioEscolhido.text = findViewById<RadioButton>(rdGroup.checkedRadioButtonId).text
+            }
+        }
     }
 }
