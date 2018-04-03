@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Created by jeferson on 02/04/18.
  */
 class RetrofitConfig {
-    private val retrofit = Retrofit.Builder().baseUrl("http://192.168.0.11:8080/testeArquitetura/api/").addConverterFactory(GsonConverterFactory.create()).build()
+    private val retrofit = Retrofit.Builder().baseUrl("http://testearquitetura.herokuapp.com/api/").addConverterFactory(GsonConverterFactory.create()).build()
 
 
     public fun pessoaRepository() : IPessoaRepository {
