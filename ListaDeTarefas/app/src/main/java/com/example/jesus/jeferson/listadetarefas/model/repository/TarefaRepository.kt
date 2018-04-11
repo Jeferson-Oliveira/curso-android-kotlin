@@ -7,7 +7,7 @@ import com.example.jesus.jeferson.listadetarefas.model.entity.Tarefa
  */
 class TarefaRepository {
 
-    public fun listarTodos() : List<Tarefa> {
+    public fun listarTodos() : MutableList<Tarefa> {
         var retorno = ArrayList<Tarefa>()
 
         for (i in 0..10) {

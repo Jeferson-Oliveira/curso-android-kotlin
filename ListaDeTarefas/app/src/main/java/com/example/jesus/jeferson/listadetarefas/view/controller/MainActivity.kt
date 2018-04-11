@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val tarefaService = TarefaService()
-    var tarefas: List<Tarefa> = ArrayList<Tarefa>()
+    var tarefas: MutableList<Tarefa> = ArrayList<Tarefa>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,10 @@ class MainActivity : AppCompatActivity() {
             if (txTarefa.text.isEmpty()) {
                 Toast.makeText(this, "Por favor preencha o nome da tarefa", Toast.LENGTH_SHORT).show()
             } else {
-
+                val novaTarefa = Tarefa(0L, txTarefa.text.toString())
+                tarefas.add(novaTarefa)
+                txTarefa.setText("")
+                Toast.makeText(this, "Tarefa adicionada com sucesso!", Toast.LENGTH_SHORT).show()
             }
         }
         listaTarefas.layoutManager = StaggeredGridLayoutManager(1 , StaggeredGridLayoutManager.VERTICAL)

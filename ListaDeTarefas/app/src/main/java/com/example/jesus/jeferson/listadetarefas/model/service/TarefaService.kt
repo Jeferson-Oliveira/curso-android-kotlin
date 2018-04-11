@@ -10,7 +10,7 @@ class TarefaService {
 
     private val repository: TarefaRepository = TarefaRepository()
 
-    fun listar(): List<Tarefa> {
+    fun listar(): MutableList<Tarefa> {
         return this.repository.listarTodos()
     }
 }
