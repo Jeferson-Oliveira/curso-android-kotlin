@@ -13,5 +13,6 @@ class TarefaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bidingView(tarefa: Tarefa) {
         this.nome.text = tarefa.nome
+
     }
 }

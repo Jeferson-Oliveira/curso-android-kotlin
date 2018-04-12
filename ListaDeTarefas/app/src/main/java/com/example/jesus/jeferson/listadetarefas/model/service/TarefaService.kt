@@ -1,5 +1,6 @@
 package com.example.jesus.jeferson.listadetarefas.model.service
 
+import android.content.Context
 import com.example.jesus.jeferson.listadetarefas.model.entity.Tarefa
 import com.example.jesus.jeferson.listadetarefas.model.repository.TarefaRepository
 
@@ -8,9 +9,25 @@ import com.example.jesus.jeferson.listadetarefas.model.repository.TarefaReposito
  */
 class TarefaService {
 
-    private val repository: TarefaRepository = TarefaRepository()
+    private val repository: TarefaRepository
+
+    constructor(context: Context) {
+        repository = TarefaRepository(context)
+    }
 
     fun listar(): MutableList<Tarefa> {
-        return this.repository.listarTodos()
+        return repository.listarTodos()
+    }
+
+    public fun inserir(tarefa: Tarefa)  {
+        repository.inserir(tarefa)
+    }
+
+    public fun alterar(tarefa: Tarefa)  {
+        repository.alterar(tarefa)
+    }
+
+    public fun excluir(tarefa: Tarefa)  {
+        repository.excluir(tarefa)
     }
 }
