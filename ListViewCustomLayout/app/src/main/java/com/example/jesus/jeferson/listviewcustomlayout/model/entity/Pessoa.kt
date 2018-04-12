@@ -10,6 +10,14 @@ class Pessoa {
     var dataNascimento: String
     var sexo: SexoEnum
 
+    constructor() {
+        id = 0
+        nome = ""
+        sobrenome = ""
+        dataNascimento = ""
+        sexo = SexoEnum.MASCULINO
+    }
+
     constructor(id: Long, nome: String, sobrenome: String, dataNascimento: String, sexo: SexoEnum) {
         this.id = id
         this.nome = nome

@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadPessoas()
         loadComponents()
+
+        loadPessoas()
     }
 
 
     private fun loadComponents() {
-        listaItens.adapter = PessoaListAdapter(pessoasList,this) //ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pessoasList.map { it.nome })  // PessoaListAdapter(pessoasList,this)
         listaItens.setOnItemClickListener{ parent, view, position,id ->
             Toast.makeText(applicationContext,"Item Selecionado - ${pessoasList.get(position).nome}",Toast.LENGTH_SHORT).show()
         }
@@ -34,7 +34,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadPessoas() {
-        pessoasList = service.getPessoas()
+        service.listar(onSucess = { pessoas ->
+            pessoas?.let {
+                this.pessoasList = it
+                listaItens.adapter = PessoaListAdapter(it, this) //ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pessoasList.map { it.nome })  // PessoaListAdapter(pessoasList,this)
+            }
+        } , onError = { mensagem ->
+            mensagem?.let {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
 }
