@@ -24,19 +24,16 @@ class TarefaRepository {
 
         val db = dbHelper.readableDatabase
 
-        val cursor = db.rawQuery("SELECT * FROM ${DbTarefasOpenHelper.TABELA_TAREFA}" , null)
+        var cursor = db.rawQuery("SELECT ${DbTarefasOpenHelper.ID},${DbTarefasOpenHelper.NOME} FROM ${DbTarefasOpenHelper.TABELA_TAREFA}" , null)
 
         val indiceid = cursor.getColumnIndex(DbTarefasOpenHelper.ID)
         val indiceNome = cursor.getColumnIndex(DbTarefasOpenHelper.NOME)
 
-        cursor.moveToFirst()
-        if (cursor.count > 0) {
-            while (cursor != null) {
+        if(cursor.moveToFirst()){
+            do{
                 retorno.add(Tarefa(cursor.getInt(indiceid).toLong(), cursor.getString(indiceNome)))
-                cursor.moveToNext()
-            }
+            }while(cursor.moveToNext());
         }
-
         return retorno
     }
 

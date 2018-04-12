@@ -29,17 +29,19 @@ class MainActivity : AppCompatActivity() {
             } else {
                 val novaTarefa = Tarefa(0L, txTarefa.text.toString())
                 tarefaService.inserir(novaTarefa)
-                loadTarefas()
-                txTarefa.setText("")
+                tarefas.add(novaTarefa)
+                //loadTarefas()
                 Toast.makeText(this, "Tarefa adicionada com sucesso!", Toast.LENGTH_SHORT).show()
             }
         }
+
         listaTarefas.layoutManager = StaggeredGridLayoutManager(1 , StaggeredGridLayoutManager.VERTICAL)
     }
 
     private fun loadTarefas() {
         tarefas = tarefaService.listar()
         listaTarefas.adapter = TarefaListAdapter(tarefas,this)
+        listaTarefas.adapter.notifyDataSetChanged()
     }
 
 }

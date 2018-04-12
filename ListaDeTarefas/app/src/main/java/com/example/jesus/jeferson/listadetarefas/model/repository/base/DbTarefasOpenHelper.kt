@@ -14,18 +14,13 @@ class DbTarefasOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME_BA
         val TABELA_TAREFA = "tarefas"
         val ID = "_id"
         val NOME = "nome"
-        val DATA_INICIO = "data_inicio"
-        val DATA_FIM = "data_fim"
         private val VERSAO_DB = 1
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val sql = "CREATE TABLE ${TABELA_TAREFA} ( " +
-                "${ID} integer PRIMARY KEY AUTOINCREMENT, " +
-                "${NOME} text not null, " +
-                "${DATA_INICIO} date, " +
-                "${DATA_FIM} date);"
-
+        val sql = "CREATE TABLE IF NOT EXISTS ${TABELA_TAREFA} ( " +
+                "${ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "${NOME} VARCHAR NOT NULL); "
         db?.let {
             it.execSQL(sql)
         }
