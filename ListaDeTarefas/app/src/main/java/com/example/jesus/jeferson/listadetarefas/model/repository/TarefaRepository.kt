@@ -24,7 +24,7 @@ class TarefaRepository {
 
         val db = dbHelper.readableDatabase
 
-        var cursor = db.rawQuery("SELECT ${DbTarefasOpenHelper.ID},${DbTarefasOpenHelper.NOME} FROM ${DbTarefasOpenHelper.TABELA_TAREFA}" , null)
+        var cursor = db.rawQuery("SELECT ${DbTarefasOpenHelper.ID},${DbTarefasOpenHelper.NOME} FROM ${DbTarefasOpenHelper.TABELA_TAREFA} ORDER BY ${DbTarefasOpenHelper.ID} DESC" , null)
 
         val indiceid = cursor.getColumnIndex(DbTarefasOpenHelper.ID)
         val indiceNome = cursor.getColumnIndex(DbTarefasOpenHelper.NOME)
@@ -54,6 +54,14 @@ class TarefaRepository {
     }
 
     public fun excluir(tarefa: Tarefa)  {
+        val db = dbHelper.writableDatabase
+        db.delete(DbTarefasOpenHelper.TABELA_TAREFA, "${DbTarefasOpenHelper.ID}=${tarefa.id}", null)
+        db.close()
+    }
 
+    fun excluirTodas() {
+        val db = dbHelper.writableDatabase
+        db.delete(DbTarefasOpenHelper.TABELA_TAREFA, null,null)
+        db.close()
     }
 }

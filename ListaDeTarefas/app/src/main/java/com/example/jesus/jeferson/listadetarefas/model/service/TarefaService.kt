@@ -30,4 +30,8 @@ class TarefaService {
     public fun excluir(tarefa: Tarefa)  {
         repository.excluir(tarefa)
     }
+
+    public fun excluirTodas() {
+        repository.excluirTodas()
+    }
 }
