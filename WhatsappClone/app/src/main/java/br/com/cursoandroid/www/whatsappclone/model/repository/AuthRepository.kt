@@ -6,16 +6,18 @@ import android.util.Log
 import br.com.cursoandroid.www.whatsappclone.model.entity.User
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 /**
  * Created by jeferson on 14/04/18.
  */
 class AuthRepository {
-    private val ARQUIVO_PREFERENCIA = "ArquivoPreferencia"
+
     val firebaseAuth = FirebaseAuth.getInstance()
+    val firebaseDatabase = FirebaseDatabase.getInstance().reference
+
     var token: String = ""
-    //var sharedPreferences = SharedPreferences(ARQUIVO_PREFERENCIA,0)
 
 
     fun signIn(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
@@ -33,10 +35,23 @@ class AuthRepository {
     fun signUp(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
         firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener {
             if (it.isSuccessful) {
-                onSuccess()
+                user.id = it.result.user.uid
+                saveUserData(user,onSuccess,onError)
             } else {
                 it.exception?.message?.let {
                     onError(it)
+                }
+            }
+        }
+    }
+
+    private fun saveUserData(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
+        firebaseDatabase.child("usuarios").child(user.id).setValue(user).addOnCompleteListener {
+            if (it.isSuccessful) {
+                onSuccess()
+            } else {
+                it.exception?.message?.let {
+                    onError("Usuário cadastrado com sucesso porém os dados não foram guardados ".plus(it))
                 }
             }
         }

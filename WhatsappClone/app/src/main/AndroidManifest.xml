@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.cursoandroid.www.whatsappclone">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.SmsValidateActivity"></activity>
+        <activity
+            android:name=".controller.SmsValidateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.BasicFieldsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".controller.HomeActivity" />
+        <activity android:name=".controller.RegisterPasswordActivity"></activity>
     </application>
 
 </manifest>
