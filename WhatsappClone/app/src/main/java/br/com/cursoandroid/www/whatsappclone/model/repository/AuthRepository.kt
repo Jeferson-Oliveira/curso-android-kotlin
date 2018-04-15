@@ -4,8 +4,7 @@ import android.content.SharedPreferences
 import android.telephony.SmsManager
 import android.util.Log
 import br.com.cursoandroid.www.whatsappclone.model.entity.User
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
@@ -34,14 +33,24 @@ class AuthRepository {
 
     fun signUp(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
         firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener {
-            if (it.isSuccessful) {
-                user.id = it.result.user.uid
-                saveUserData(user,onSuccess,onError)
-            } else {
-                it.exception?.message?.let {
-                    onError(it)
+
+            try {
+                if (it.isSuccessful) {
+                    user.id = it.result.user.uid
+                    saveUserData(user,onSuccess,onError)
+                } else {
+                    it.exception?.let {
+                        throw it
+                    }
                 }
+            } catch (wpe: FirebaseAuthWeakPasswordException) {
+                onError("Por favor preencha uma senha mais forte")
+            } catch (ice: FirebaseAuthInvalidCredentialsException) {
+                onError("Por favor verifique se se email está correto")
+            } catch (fce: FirebaseAuthUserCollisionException) {
+                onError("Já existe um usuário com essas credenciais cadastrado")
             }
+
         }
     }
 
