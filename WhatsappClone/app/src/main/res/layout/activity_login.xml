@@ -33,6 +33,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimaryDark"
         android:text="Login"
+        android:theme="@style/botaoPadrao"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/lblCadastre"
         app:layout_constraintEnd_toEndOf="@+id/txtUserPassword"

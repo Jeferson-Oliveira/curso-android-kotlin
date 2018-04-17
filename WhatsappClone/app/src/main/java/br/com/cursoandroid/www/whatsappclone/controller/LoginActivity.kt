@@ -28,12 +28,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loadComponents() {
 
+        if (repository.isUserLogged()) {
+            abrirHome()
+        }
+
         btnLogin.setOnClickListener {
             if (txtUserEmail.text.isBlank() || txtUserPassword.text.isBlank()) {
                 Toast.makeText(this, "Preencha os campos corretamente", Toast.LENGTH_SHORT).show()
             } else {
                 repository.signIn(User(txtUserEmail.text.toString(),txtUserPassword.text.toString()), onSuccess = {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    abrirHome()
                 }, onError = {
                     Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
                 })
@@ -44,6 +48,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, BasicFieldsActivity::class.java))
         }
 
+    }
+
+    private fun abrirHome() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

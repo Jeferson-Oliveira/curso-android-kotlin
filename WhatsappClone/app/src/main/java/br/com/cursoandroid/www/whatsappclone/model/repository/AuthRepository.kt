@@ -18,6 +18,9 @@ class AuthRepository {
 
     var token: String = ""
 
+    fun isUserLogged(): Boolean {
+        return firebaseAuth.currentUser != null
+    }
 
     fun signIn(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
         firebaseAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener {

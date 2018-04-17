@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Whatsapp Clone</string>
+    <string name="item_menu_sair">Sair</string>
+    <string name="item_menu_configuracoes">Configurações</string>
+    <string name="item_menu_pesquisar">Pesquisar</string>
+    <string name="item_menu_add_contato">Adicionar contato</string>
+
 </resources>
