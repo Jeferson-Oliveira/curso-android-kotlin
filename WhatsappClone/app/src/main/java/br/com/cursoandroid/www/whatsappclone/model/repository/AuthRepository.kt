@@ -1,12 +1,10 @@
 package br.com.cursoandroid.www.whatsappclone.model.repository
 
-import android.content.SharedPreferences
 import android.telephony.SmsManager
 import android.util.Log
 import br.com.cursoandroid.www.whatsappclone.model.entity.User
 import br.com.cursoandroid.www.whatsappclone.util.Base64Util
 import com.google.firebase.auth.*
-import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 /**
@@ -15,7 +13,7 @@ import java.util.*
 class AuthRepository {
 
     val firebaseAuth = FirebaseAuth.getInstance()
-    val firebaseDatabase = FirebaseDatabase.getInstance().reference
+    val userRepository = UserRepository()
 
     var token: String = ""
 
@@ -41,7 +39,7 @@ class AuthRepository {
             try {
                 if (it.isSuccessful) {
                     user.id = Base64Util.encode(user.email)
-                    saveUserData(user,onSuccess,onError)
+                    userRepository.saveUserData(user,onSuccess,onError)
                 } else {
                     it.exception?.let {
                         throw it
@@ -58,17 +56,7 @@ class AuthRepository {
         }
     }
 
-    private fun saveUserData(user: User, onSuccess: () -> Unit, onError: (errorMessage: String) -> Unit) {
-        firebaseDatabase.child("usuarios").child(user.id).setValue(user).addOnCompleteListener {
-            if (it.isSuccessful) {
-                onSuccess()
-            } else {
-                it.exception?.message?.let {
-                    onError("Usuário cadastrado com sucesso porém os dados não foram guardados ".plus(it))
-                }
-            }
-        }
-    }
+
 
     fun signOut() {
         firebaseAuth.signOut();
