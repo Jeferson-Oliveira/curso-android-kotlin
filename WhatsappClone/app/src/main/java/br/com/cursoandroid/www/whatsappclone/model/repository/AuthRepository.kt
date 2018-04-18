@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.telephony.SmsManager
 import android.util.Log
 import br.com.cursoandroid.www.whatsappclone.model.entity.User
+import br.com.cursoandroid.www.whatsappclone.util.Base64Util
 import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
@@ -39,7 +40,7 @@ class AuthRepository {
 
             try {
                 if (it.isSuccessful) {
-                    user.id = it.result.user.uid
+                    user.id = Base64Util.encode(user.email)
                     saveUserData(user,onSuccess,onError)
                 } else {
                     it.exception?.let {
