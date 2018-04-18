@@ -2,11 +2,13 @@ package br.com.cursoandroid.www.whatsappclone.controller
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import br.com.cursoandroid.www.whatsappclone.R
+import br.com.cursoandroid.www.whatsappclone.adapters.TabAdapter
 import br.com.cursoandroid.www.whatsappclone.model.repository.AuthRepository
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -21,9 +23,17 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun loadComponents() {
+
         val toolbar = findViewById<Toolbar>(barra_menu.id)
         toolbar.title = "Whatsapp"
         setSupportActionBar(toolbar)
+
+        stl_layout.setDistributeEvenly(true)
+
+        vp_pagina.adapter = TabAdapter(supportFragmentManager)
+
+        stl_layout.setViewPager(vp_pagina)
+        stl_layout.setSelectedIndicatorColors(ContextCompat.getColor(this,R.color.colorAccent))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
